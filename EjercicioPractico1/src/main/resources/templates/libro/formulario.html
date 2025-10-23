@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos :: body">
+<body>
+    <h2>Agregar Nuevo Libro</h2>
+
+    <form th:action="@{/libros/guardar}" th:object="${libro}" method="post">
+        <label>Título:</label><br>
+        <input type="text" th:field="*{titulo_libro}" required><br><br>
+
+        <label>Autor:</label><br>
+        <input type="text" th:field="*{autor_libro}" required><br><br>
+
+        <label>Género:</label><br>
+        <select th:field="*{genero}" required>
+            <option th:each="g : ${generos}" th:value="${g}" th:text="${g.nombre_genero}"></option>
+        </select><br><br>
+
+        <label>Costo aproximado:</label><br>
+        <input type="number" step="0.01" th:field="*{costo_aprox}"><br><br>
+
+        <button type="submit">Guardar</button>
+        <a th:href="@{/libros/lista}"><input type="button" value="Volver"></a>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos :: body">
+<body>
+    <h2>Listado de Sugerencias / Quejas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Tipo</th>
+                <th>Asunto</th>
+                <th>Atendido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${sugerencias}">
+                <td th:text="${s.nombre_visitante}"></td>
+                <td th:text="${s.correo_contacto}"></td>
+                <td th:text="${s.tipo_comunicacion}"></td>
+                <td th:text="${s.asunto}"></td>
+                <td th:text="${s.atendido ? 'Sí' : 'No'}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+

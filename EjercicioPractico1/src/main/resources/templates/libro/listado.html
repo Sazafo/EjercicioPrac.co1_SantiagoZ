@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos :: body">
+<body>
+    <h2>Listado de Libros</h2>
+
+    <a th:href="@{/libros/nuevo}">
+        <button>➕ Agregar nuevo libro</button>
+    </a>
+
+    <table style="margin-top: 1.5rem;">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Disponible</th>
+                <th>Costo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="libro : ${libros}">
+                <td th:text="${libro.titulo_libro}"></td>
+                <td th:text="${libro.autor_libro}"></td>
+                <td th:text="${libro.genero.nombre_genero}"></td>
+                <td th:text="${libro.disponible ? 'Sí' : 'No'}"></td>
+                <td th:text="${libro.costo_aprox}"></td>
+                <td>
+                    <a th:href="@{/libros/eliminar/{id}(id=${libro.id_libro})}">
+                        <button>Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
